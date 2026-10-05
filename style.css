@@ -4,6 +4,7 @@
   padding: 0;
 }
 
+/* ===== Цвета и шрифт ===== */
 :root {
   --color-bg: #f5efe6;
   --color-text: #3b2a1a;
@@ -15,6 +16,7 @@
   --shadow-card-hover: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
+/* ===== Базовые стили ===== */
 body {
   font-family: var(--font-main);
   background-color: var(--color-bg);
@@ -22,11 +24,13 @@ body {
   line-height: 1.6;
 }
 
+/* ===== Контейнер ===== */
 .container {
   display: flex;
   min-height: 100vh;
 }
 
+/* ===== Боковое меню ===== */
 .sidebar {
   width: 250px;
   background-color: var(--color-text);
@@ -60,6 +64,7 @@ body {
   color: var(--color-white);
 }
 
+/* ===== Основной контент ===== */
 .content {
   flex: 1;
   padding: 40px;
@@ -71,12 +76,14 @@ body {
   margin-bottom: 30px;
 }
 
+/* ===== Галерея ===== */
 .gallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
+/* ===== Карточки ===== */
 .card {
   background-color: var(--color-white);
   padding: 10px;
@@ -121,6 +128,7 @@ body {
   color: var(--color-text);
 }
 
+/* ===== Подвал ===== */
 .footer {
   background-color: var(--color-accent);
   color: var(--color-bg);
@@ -129,6 +137,7 @@ body {
   font-size: 14px;
 }
 
+/* ===== Страница Контакты ===== */
 .contacts {
   display: flex;
   gap: 30px;
@@ -166,6 +175,7 @@ body {
   margin-bottom: 20px;
 }
 
+/* ===== Форма обратной связи ===== */
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -209,6 +219,7 @@ body {
   transform: scale(1.02);
 }
 
+/* ===== Адаптив для телефона ===== */
 @media (max-width: 600px) {
   .container {
     flex-direction: column;
