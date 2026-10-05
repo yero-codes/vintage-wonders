@@ -11,6 +11,8 @@
   --color-hover: #d97706;
   --font-main: Georgia, serif;
   --color-white: #fff;
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-card-hover: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 body {
@@ -79,12 +81,19 @@ body {
   background-color: var(--color-white);
   padding: 10px;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-card);
   font-size: 16px;
   max-width: 250px;
   text-align: center;
   display: flex;
   flex-direction: column;
+  transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .card-featured {
@@ -99,6 +108,11 @@ body {
   object-position: center top;
   border-radius: 6px;
   margin-bottom: 10px;
+  transition: transform 0.3s;
+}
+
+.card:hover img {
+  transform: scale(1.05);
 }
 
 .card p {
@@ -126,14 +140,14 @@ body {
   width: 100%;
   max-width: 400px;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .shop1-image {
   width: 100%;
   max-width: 400px;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .contacts-info {
@@ -192,6 +206,7 @@ body {
 
 .contact-form button:hover {
   background-color: var(--color-hover);
+  transform: scale(1.02);
 }
 
 @media (max-width: 600px) {
