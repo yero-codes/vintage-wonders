@@ -79,9 +79,15 @@ body {
   flex-direction: column;
 }
 
+.card-featured {
+  border: 3px solid #b8651b;
+  box-shadow: 0 4px 16px rgba(184, 101, 27, 0.3);
+}
+
 .card img {
   width: 100%;
-  aspect-ratio: 2 / 3;      /* было height: 200px */
+  aspect-ratio: 2 / 3;
+  /* было height: 200px */
   object-fit: cover;
   object-position: center top;
   border-radius: 6px;
@@ -101,6 +107,7 @@ body {
   padding: 20px;
   font-size: 14px;
 }
+
 .contacts {
   display: flex;
   gap: 30px;
@@ -114,6 +121,7 @@ body {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
+
 .shop1-image {
   width: 100%;
   max-width: 400px;
@@ -130,6 +138,56 @@ body {
   margin-bottom: 15px;
   font-size: 18px;
 }
+
+.form-title {
+  font-size: 24px;
+  color: #b8651b;
+  margin-bottom: 20px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 550px;
+  margin-top: 30px;
+}
+
+
+.contact-form label {
+  font-weight: 600;
+  color: #3b2a1a;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 12px;
+  border: 1px solid #b8651b;
+  border-radius: 6px;
+  font-size: 16px;
+  font-family: inherit;
+}
+
+.contact-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.contact-form button {
+  padding: 12px 24px;
+  background-color: #b8651b;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+  background-color: #d97706;
+}
+
 @media (max-width: 600px) {
   .container {
     flex-direction: column;
