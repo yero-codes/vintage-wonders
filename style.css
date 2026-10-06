@@ -84,7 +84,8 @@ body {
 }
 
 /* ===== Карточки ===== */
-.card {
+.card:first-child {
+  border-top: 4px solid var(--color-accent);
   background-color: var(--color-white);
   padding: 10px;
   border-radius: 8px;
@@ -198,6 +199,13 @@ body {
   font-family: inherit;
 }
 
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--color-hover);
+  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.2);
+}
+
 .contact-form textarea {
   min-height: 120px;
   resize: vertical;
@@ -214,9 +222,18 @@ body {
   transition: background-color 0.3s;
 }
 
+.contact-form button:active {
+  transform: scale(0.98);
+}
+
 .contact-form button:hover {
   background-color: var(--color-hover);
   transform: scale(1.02);
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-white);
 }
 
 /* ===== Адаптив для телефона ===== */
