@@ -87,6 +87,29 @@ body {
   gap: 20px;
 }
 
+/* ===== Подпись поверх карточки ===== */
+.card-figure {
+  position: relative;
+  margin: 0;
+}
+
+.card-figure figcaption {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  background-color: rgba(59, 42, 26, 0.85);
+  color: var(--color-white);
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.card:hover .card-figure figcaption {
+  opacity: 1;
+}
 /* ===== Карточки ===== */
 .card:first-child {
   border-top: 4px solid var(--color-accent);
@@ -125,12 +148,6 @@ body {
 
 .card:hover img {
   transform: scale(1.05);
-}
-
-.card p {
-  margin: 0;
-  font-size: 16px;
-  color: var(--color-text);
 }
 
 /* ===== Подвал ===== */
