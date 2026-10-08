@@ -295,7 +295,10 @@ body {
 
   .sidebar {
     width: 100%;
-    padding: 20px;
+    padding: 20px;  
+    position: static;
+    height: auto;
+    overflow-y: visible;
   }
 
   .logo {
