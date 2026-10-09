@@ -210,46 +210,48 @@ body {
 }
 
 /* ===== Страница Контакты ===== */
-.contacts {
+.contacts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "images info"
+    "images form-title"
+    "images form";
+  gap: 20px;
+  align-items: start;
+}
+
+.contacts-images {
+  grid-area: images;
   display: flex;
-  gap: 30px;
-  align-items: flex-start;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 20px;
+  align-self: start;
+  /* ← не растягиваться */
 }
 
-.shop-image {
+.contacts-images .shop-image,
+.contacts-images .shop1-image {
   width: 100%;
   max-width: 400px;
-  border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
-
-.shop1-image {
-  width: 100%;
-  max-width: 400px;
-  border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  /* ← ограничение ширины */
+  height: auto;
+  /* ← не растягивать по высоте */
 }
 
 .contacts-info {
-  flex: 1;
-  min-width: 250px;
-}
-
-.contacts-info p {
-  margin-bottom: 15px;
-  font-size: 18px;
+  grid-area: info;
+  font-size: 20px;
+  /* ← ,больше, чем было */
 }
 
 .form-title {
-  font-size: 24px;
-  color: var(--color-accent);
-  margin-bottom: 20px;
-  animation: fadeInUp 0.6s ease-out 0.2s both;
+  grid-area: form-title;
 }
 
 /* ===== Форма обратной связи ===== */
 .contact-form {
+  grid-area: form;
   display: flex;
   flex-direction: column;
   gap: 15px;
