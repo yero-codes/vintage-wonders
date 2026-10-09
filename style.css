@@ -202,7 +202,7 @@ body {
 
 /* ===== Подвал ===== */
 .footer {
-  background-color: var(--color-accent);
+  background-color: var(--color-text);
   color: var(--color-bg);
   text-align: center;
   padding: 20px;
