@@ -339,6 +339,17 @@ body {
   transform: translateY(-3px);
 }
 
+/* ===== Адаптив для планшета ===== */
+@media (min-width: 601px) and (max-width: 900px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sidebar {
+    width: 200px;
+  }
+}
+
 /* ===== Адаптив для телефона ===== */
 @media (max-width: 600px) {
   .container {
