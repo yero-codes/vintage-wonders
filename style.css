@@ -361,14 +361,54 @@ body {
   }
 
   .sidebar {
-    width: 200px;
+    width: 180px;
   }
+
+  .content {
+  padding: 20px;
+}
+
+.contacts-grid {
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "images"
+    "info"
+    "form-title"
+    "form";
+}
+
+.contact-form {
+  max-width: 100%;
+}
+
+.contacts-images .shop-image,
+.contacts-images .shop1-image {
+  max-width: 100%;
+}
 }
 
 /* ===== Адаптив для телефона ===== */
 @media (max-width: 600px) {
   .container {
     flex-direction: column;
+  }
+
+   .contacts-grid {
+    grid-template-columns: 1fr;      /* ← одна колонка */
+    grid-template-areas:
+      "images"
+      "info"
+      "form-title"
+      "form";
+  }
+
+  .contact-form {
+    max-width: 100%;
+  }
+
+  .contacts-images .shop-image,
+  .contacts-images .shop1-image {
+    max-width: 100%;
   }
 
   .sidebar {
