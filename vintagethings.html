@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,11 +9,14 @@
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
 </head>
+
 <body>
   <div class="container">
+
+    <!-- Боковое меню -->
     <aside class="sidebar">
       <h1 class="logo">Винтажные чудеса</h1>
-      <nav class="menu">
+      <nav class="menu" aria-label="Основное меню">
         <a href="index.html" class="menu-item">Главная</a>
         <a href="books.html" class="menu-item">Книги СССР</a>
         <a href="farfor.html" class="menu-item">Фарфор</a>
@@ -22,6 +26,7 @@
       </nav>
     </aside>
 
+    <!-- Основной контент -->
     <main class="content">
       <header>
         <h2>Винтажные вещи</h2>
@@ -29,28 +34,36 @@
 
       <section class="gallery">
         <article class="card">
-          <img src="images/lenin.jpg" alt="В.И.Ленин">
-          <p>В.И.Ленин</p>
+          <figure class="card-figure">
+            <img src="images/lenin.jpg" alt="В.И.Ленин" loading="lazy">
+            <figcaption>В.И.Ленин</figcaption>
+          </figure>
         </article>
         <article class="card">
-          <img src="images/eastereggs.jpg" alt="Пасхальные яйца">
-          <p>Пасхальные яйца</p>
+          <figure class="card-figure">
+            <img src="images/eastereggs.jpg" alt="Пасхальные яйца" loading="lazy">
+            <figcaption>Пасхальные яйца</figcaption>
+          </figure>
         </article>
         <article class="card">
-          <img src="images/podstakannik.jpg" alt="Подстаканник серебряный">
-          <p>Подстаканник серебряный</p>
+          <figure class="card-figure">
+            <img src="images/podstakannik.jpg" alt="Подстаканник серебряный" loading="lazy">
+            <figcaption>Подстаканник серебряный</figcaption>
+          </figure>
         </article>
       </section>
     </main>
   </div>
 
+  <!-- Подвал -->
   <footer class="footer">
     <p>© 2026 Винтажные чудеса. Все права защищены.</p>
   </footer>
 
   <!-- Кнопка "Наверх" -->
-<button class="button-up" aria-label="Наверх">↑</button>
-<script src="script.js"></script>
+  <button class="button-up" aria-label="Наверх">↑</button>
+  <script src="script.js"></script>
 
 </body>
+
 </html>

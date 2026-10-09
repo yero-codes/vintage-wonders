@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,11 +9,14 @@
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
 </head>
+
 <body>
   <div class="container">
+
+    <!-- Боковое меню -->
     <aside class="sidebar">
       <h1 class="logo">Винтажные чудеса</h1>
-      <nav class="menu">
+      <nav class="menu" aria-label="Основное меню">
         <a href="index.html" class="menu-item">Главная</a>
         <a href="books.html" class="menu-item">Книги СССР</a>
         <a href="farfor.html" class="menu-item">Фарфор</a>
@@ -22,6 +26,7 @@
       </nav>
     </aside>
 
+    <!-- Основной контент -->
     <main class="content">
       <header>
         <h2>Фарфор СССР</h2>
@@ -29,28 +34,36 @@
 
       <section class="gallery">
         <article class="card">
-          <img src="images/yakut.jpg" alt="Якут с собакой">
-          <p>Якут с собакой</p>
+          <figure class="card-figure">
+            <img src="images/yakut.jpg" alt="Якут с собакой" loading="lazy">
+            <figcaption>Якут с собакой</figcaption>
+          </figure>
         </article>
         <article class="card">
-          <img src="images/snowman.jpg" alt="Снеговик">
-          <p>Снеговик</p>
+          <figure class="card-figure">
+            <img src="images/snowman.jpg" alt="Снеговик" loading="lazy">
+            <figcaption>Снеговик</figcaption>
+          </figure>
         </article>
         <article class="card">
-          <img src="images/beer.jpg" alt="Олимпиада 1980">
-          <p>Олимпиада 1980</p>
+          <figure class="card-figure">
+            <img src="images/beer.jpg" alt="Олимпиада 1980" loading="lazy">
+            <figcaption>Олимпиада 1980</figcaption>
+          </figure>
         </article>
       </section>
     </main>
   </div>
 
+  <!-- Подвал -->
   <footer class="footer">
     <p>© 2026 Винтажные чудеса. Все права защищены.</p>
   </footer>
 
   <!-- Кнопка "Наверх" -->
-<button class="button-up" aria-label="Наверх">↑</button>
-<script src="script.js"></script>
+  <button class="button-up" aria-label="Наверх">↑</button>
+  <script src="script.js"></script>
 
 </body>
+
 </html>

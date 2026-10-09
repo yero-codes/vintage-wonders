@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,11 +9,14 @@
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
 </head>
+
 <body>
   <div class="container">
+    
+    <!-- Боковое меню -->
     <aside class="sidebar">
       <h1 class="logo">Винтажные чудеса</h1>
-      <nav class="menu">
+      <nav class="menu" aria-label="Основное меню">
         <a href="index.html" class="menu-item">Главная</a>
         <a href="books.html" class="menu-item">Книги СССР</a>
         <a href="farfor.html" class="menu-item">Фарфор</a>
@@ -22,6 +26,7 @@
       </nav>
     </aside>
 
+    <!-- Основной контент -->
     <main class="content">
       <header>
         <h2>Книги СССР</h2>
@@ -29,27 +34,35 @@
 
       <section class="gallery">
         <article class="card">
-          <img src="images/book1.jpg" alt="А.П.Чехов  Повести и рассказы">
-          <p>А.П.Чехов  Повести и рассказы</p>
+          <figure class="card-figure">
+            <img src="images/book1.jpg" alt="А.П.Чехов  Повести и рассказы" loading="lazy">
+            <figcaption>А.П.Чехов Повести и рассказы</figcaption>
+          </figure>
         </article>
         <article class="card">
-          <img src="images/book2.jpg" alt="Я.Пшимановский Четыре танкиста и собака">
-          <p>Я.Пшимановский  Четыре танкиста и собака</p>
+          <figure class="card-figure">
+            <img src="images/book2.jpg" alt="Я.Пшимановский Четыре танкиста и собака" loading="lazy">
+            <figcaption>Я.Пшимановский Четыре танкиста и собака</figcaption>
+          </figure>
         </article>
         <article class="card">
-          <img src="images/book3.jpg" alt="Д.С.Мережковский Воскресшие боги">
-          <p>Д.С.Мережковский  Воскресшие боги</p>
+          <figure class="card-figure">
+            <img src="images/book3.jpg" alt="Д.С.Мережковский Воскресшие боги" loading="lazy">
+            <figcaption>Д.С.Мережковский Воскресшие боги</figcaption>
+          </figure>
         </article>
       </section>
     </main>
   </div>
 
+  <!-- Подвал -->
   <footer class="footer">
     <p>© 2026 Винтажные чудеса. Все права защищены.</p>
   </footer>
 
   <!-- Кнопка "Наверх" -->
-<button class="button-up" aria-label="Наверх">↑</button>
-<script src="script.js"></script>
+  <button class="button-up" aria-label="Наверх">↑</button>
+  <script src="script.js"></script>
 </body>
+
 </html>

@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Монеты и банктноты — Винтажные чудеса</title>
+  <title>Монеты и банкноты — Винтажные чудеса</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
 </head>
+
 <body>
   <div class="container">
+    
+    <!-- Боковое меню -->
     <aside class="sidebar">
       <h1 class="logo">Винтажные чудеса</h1>
-      <nav class="menu">
+      <nav class="menu" aria-label="Основное меню">
         <a href="index.html" class="menu-item">Главная</a>
         <a href="books.html" class="menu-item">Книги СССР</a>
         <a href="farfor.html" class="menu-item">Фарфор</a>
@@ -22,6 +26,7 @@
       </nav>
     </aside>
 
+    <!-- Основной контент -->
     <main class="content">
       <header>
         <h2>Монеты и банкноты</h2>
@@ -29,28 +34,36 @@
 
       <section class="gallery">
         <article class="card">
-          <img src="images/money1.jpg" alt="Банкноты разные">
-          <p>Банкноты разные</p>
+          <figure class="card-figure">
+            <img src="images/money1.jpg" alt="Банкноты разные" loading="lazy">
+            <figcaption>Банкноты разные</figcaption>
+          </figure>
         </article>
         <article class="card">
-          <img src="images/money2.jpg" alt="Монеты разные">
-          <p>Монеты разные</p>
+          <figure class="card-figure">
+            <img src="images/money2.jpg" alt="Монеты разные" loading="lazy">
+            <figcaption>Монеты разные</figcaption>
+          </figure>
         </article>
         <article class="card">
-          <img src="images/money3.jpg" alt="Монеты разные">
-          <p>Монеты разные</p>
+          <figure class="card-figure">
+            <img src="images/money3.jpg" alt="Монеты разные" loading="lazy">
+            <figcaption>Монеты разные</figcaption>
+          </figure>
         </article>
       </section>
     </main>
   </div>
 
+  <!-- Подвал -->
   <footer class="footer">
     <p>© 2026 Винтажные чудеса. Все права защищены.</p>
   </footer>
 
   <!-- Кнопка "Наверх" -->
-<button class="button-up" aria-label="Наверх">↑</button>
-<script src="script.js"></script>
+  <button class="button-up" aria-label="Наверх">↑</button>
+  <script src="script.js"></script>
 
 </body>
+
 </html>
