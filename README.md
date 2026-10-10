@@ -65,9 +65,9 @@ vintage-wonders/
 
 ## Запуск локально
 
-1. Склонируйте репозиторий: 
+1. Склонируйте репозиторий:
    ```
-git clone https://github.com/yero-codes/vintage-wonders.git
+   git clone https://github.com/yero-codes/vintage-wonders.git
    ```
 
 2. Откройте `index.html` в браузере.
