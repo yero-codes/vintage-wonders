@@ -3,7 +3,7 @@ const buttonUp = document.querySelector('.button-up');
 
 // Показывать кнопку при прокрутке вниз
 window.addEventListener('scroll', () => {
-  if (window.scrollY > 300) {
+  if (window.scrollY > 50) {
     buttonUp.classList.add('visible');
   } else {
     buttonUp.classList.remove('visible');
