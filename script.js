@@ -42,16 +42,23 @@ function createCard(item) {
 }
 
 // ===== Карточка для главной =====
+const mainItems = [
+  { img: 'kukla3.jpg', title: 'Мини-кукла' },
+  { img: 'volkgips.jpg', title: 'Волк и Красная Шапочка' }
+];
+
 if (window.location.pathname.includes('index') || window.location.pathname === '/') {
-  const newCard = createCard({ img: 'kukla3.jpg', title: 'Мини-кукла' });
-  document.querySelector('.gallery').appendChild(newCard);
+  mainItems.forEach(function(item) {
+    document.querySelector('.gallery').appendChild(createCard(item));
+  });
 }
 
 // ===== Новые карточки для страницы "Фарфор" =====
 const farforItems = [
   { img: 'teapair.jpg', title: 'Чайная пара' },
   { img: 'uzbeshka.jpg', title: 'Узбечка с чайником' },
-  { img: 'dog.jpg', title: 'Сеттер' }
+  { img: 'dog.jpg', title: 'Сеттер' },
+  { img: 'hozyajka.jpg', title: 'Хозяйка медной горы'}
 ];
 
 if (window.location.pathname.includes('farfor')) {
@@ -78,7 +85,8 @@ if (window.location.pathname.includes('money')) {
 const thingItems = [
   { img: 'grafin.jpg', title: 'Графин "Дама" с бокалами' },
   { img: 'neznakomka.jpg', title: 'Картина "Незнакомка"' },
-  { img: 'pugovizy.jpg', title: 'Коллекция пуговиц' }
+  { img: 'pugovizy.jpg', title: 'Коллекция пуговиц' },
+  { img: 'sigaretnica.jpg', title: 'Сигаретница СССР'}
 ];
 
 if (window.location.pathname.includes('vintagethings')) {
