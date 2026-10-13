@@ -18,28 +18,33 @@ buttonUp.addEventListener('click', () => {
   });
 });
 
-// ===== Создание карточки =====
-if (window.location.pathname.includes('index') || window.location.pathname === '/' )
-{
-const newCard = document.createElement('article');
-newCard.classList.add('card');
+// ===== Функция создания карточки =====
+function createCard(item) {
+  const card = document.createElement('article');
+  card.classList.add('card');
 
-const newFigure = document.createElement('figure');
-newFigure.classList.add('card-figure');
+  const figure = document.createElement('figure');
+  figure.classList.add('card-figure');
 
-const newImg = document.createElement('img');
-newImg.src = 'images/kukla3.jpg';
-newImg.alt = 'Мини-кукла';
-newImg.loading = 'lazy';
+  const img = document.createElement('img');
+  img.src = 'images/' + item.img;
+  img.alt = item.title;
+  img.loading = 'lazy';
 
-const newCaption = document.createElement('figcaption');
-newCaption.textContent = 'Мини-кукла';
+  const caption = document.createElement('figcaption');
+  caption.textContent = item.title;
 
-newFigure.appendChild(newImg);
-newFigure.appendChild(newCaption);
-newCard.appendChild(newFigure);
+  figure.appendChild(img);
+  figure.appendChild(caption);
+  card.appendChild(figure);
 
-document.querySelector('.gallery').appendChild(newCard);
+  return card;
+}
+
+// ===== Карточка для главной =====
+if (window.location.pathname.includes('index') || window.location.pathname === '/') {
+  const newCard = createCard({ img: 'kukla3.jpg', title: 'Мини-кукла' });
+  document.querySelector('.gallery').appendChild(newCard);
 }
 
 // ===== Новые карточки для страницы "Фарфор" =====
@@ -49,28 +54,9 @@ const farforItems = [
   { img: 'dog.jpg', title: 'Сеттер' }
 ];
 
-const farforGallery = document.querySelector('.gallery');
-
-if (farforGallery && window.location.pathname.includes('farfor')) {
+if (window.location.pathname.includes('farfor')) {
   farforItems.forEach(function(item) {
-    const card = document.createElement('article');
-    card.classList.add('card');
-
-    const figure = document.createElement('figure');
-    figure.classList.add('card-figure');
-
-    const img = document.createElement('img');
-    img.src = 'images/' + item.img;
-    img.alt = item.title;
-    img.loading = 'lazy';
-
-    const caption = document.createElement('figcaption');
-    caption.textContent = item.title;
-
-    figure.appendChild(img);
-    figure.appendChild(caption);
-    card.appendChild(figure);
-    farforGallery.appendChild(card);
+    document.querySelector('.gallery').appendChild(createCard(item));
   });
 }
 
@@ -81,30 +67,12 @@ const moneyItems = [
   { img: 'money6.jpg', title: 'Пятирублёвые монеты' }
 ];
 
-const moneyGallery = document.querySelector('.gallery');
-
-if (moneyGallery && window.location.pathname.includes('money')) {
+if (window.location.pathname.includes('money')) {
   moneyItems.forEach(function(item) {
-    const card = document.createElement('article');
-    card.classList.add('card');
-
-    const figure = document.createElement('figure');
-    figure.classList.add('card-figure');
-
-    const img = document.createElement('img');
-    img.src = 'images/' + item.img;
-    img.alt = item.title;
-    img.loading = 'lazy';
-
-    const caption = document.createElement('figcaption');
-    caption.textContent = item.title;
-
-    figure.appendChild(img);
-    figure.appendChild(caption);
-    card.appendChild(figure);
-    moneyGallery.appendChild(card);
+    document.querySelector('.gallery').appendChild(createCard(item));
   });
 }
+
 
 // ===== Новые карточки для страницы "Винтажные вещи" =====
 const thingItems = [
@@ -113,28 +81,9 @@ const thingItems = [
   { img: 'pugovizy.jpg', title: 'Коллекция пуговиц' }
 ];
 
-const thingGallery = document.querySelector('.gallery');
-
-if (thingGallery && window.location.pathname.includes('vintagethings')) {
+if (window.location.pathname.includes('vintagethings')) {
   thingItems.forEach(function(item) {
-    const card = document.createElement('article');
-    card.classList.add('card');
-
-    const figure = document.createElement('figure');
-    figure.classList.add('card-figure');
-
-    const img = document.createElement('img');
-    img.src = 'images/' + item.img;
-    img.alt = item.title;
-    img.loading = 'lazy';
-
-    const caption = document.createElement('figcaption');
-    caption.textContent = item.title;
-
-    figure.appendChild(img);
-    figure.appendChild(caption);
-    card.appendChild(figure);
-    thingGallery.appendChild(card);
+    document.querySelector('.gallery').appendChild(createCard(item));
   });
 }
 
@@ -145,27 +94,8 @@ const bookItems = [
   { img: 'book6.jpg', title: 'Г.Ф. Шумахер. Паутина жизни' }
 ];
 
-const bookGallery = document.querySelector('.gallery');
-
-if (bookGallery && window.location.pathname.includes('books')) {
+if (window.location.pathname.includes('books')) {
   bookItems.forEach(function(item) {
-    const card = document.createElement('article');
-    card.classList.add('card');
-
-    const figure = document.createElement('figure');
-    figure.classList.add('card-figure');
-
-    const img = document.createElement('img');
-    img.src = 'images/' + item.img;
-    img.alt = item.title;
-    img.loading = 'lazy';
-
-    const caption = document.createElement('figcaption');
-    caption.textContent = item.title;
-
-    figure.appendChild(img);
-    figure.appendChild(caption);
-    card.appendChild(figure);
-    bookGallery.appendChild(card);
+    document.querySelector('.gallery').appendChild(createCard(item));
   });
 }
