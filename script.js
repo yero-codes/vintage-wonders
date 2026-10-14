@@ -109,3 +109,25 @@ if (window.location.pathname.includes('books')) {
     document.querySelector('.gallery').appendChild(createCard(item));
   });
 }
+
+// ===== Модальное окно =====
+const modal = document.querySelector('.modal');
+
+document.querySelectorAll('.card').forEach(function(card) {
+  card.addEventListener('click', function() {
+    let title = card.querySelector('figcaption').textContent;
+
+modal.innerHTML = `
+  <div class="modal-content">
+    <h2>${title}</h2>
+    <p>Здесь будет подробное описание.</p>
+    <button class="modal-close">Закрыть</button>
+  </div>
+`;
+    modal.classList.add('open');
+
+    modal.querySelector('.modal-close').addEventListener('click', function() {
+      modal.classList.remove('open');
+    });
+  });
+});
