@@ -47,10 +47,12 @@ const mainItems = [
   { img: 'volkgips.jpg', title: 'Волк и Красная Шапочка' }
 ];
 
-if (window.location.pathname.includes('index') || window.location.pathname === '/') {
+if (window.location.pathname === '/' || 
+    window.location.pathname.endsWith('/') || 
+    window.location.pathname.includes('index')){
   mainItems.forEach(function(item) {
     document.querySelector('.gallery').appendChild(createCard(item));
-  });
+  });    
 }
 
 // ===== Новые карточки для страницы "Фарфор" =====
