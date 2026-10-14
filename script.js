@@ -117,6 +117,20 @@ document.querySelectorAll('.card').forEach(function(card) {
   card.addEventListener('click', function() {
     let title = card.querySelector('figcaption').textContent;
 
+    // Закрытие по клику на фон
+modal.addEventListener('click', function(e) {
+  if (e.target === modal) {
+    modal.classList.remove('open');
+  }
+});
+
+// Закрытие по клавише Esc
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    modal.classList.remove('open');
+  }
+});
+
 modal.innerHTML = `
   <div class="modal-content">
     <h2>${title}</h2>
