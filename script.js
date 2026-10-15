@@ -145,3 +145,39 @@ modal.innerHTML = `
     });
   });
 });
+
+    // ===== Сохранение черновика формы =====
+const nameInput = document.querySelector('#name');
+const emailInput = document.querySelector('#email');
+const messageInput = document.querySelector('#message');
+
+// Загружаем сохранённые значения при открытии страницы
+if (nameInput && emailInput && messageInput) {
+  nameInput.value = localStorage.getItem('draft-name') || '';
+  emailInput.value = localStorage.getItem('draft-email') || '';
+  messageInput.value = localStorage.getItem('draft-message') || '';
+
+  // Сохраняем при вводе
+  nameInput.addEventListener('input', function() {
+    localStorage.setItem('draft-name', nameInput.value);
+  });
+
+  emailInput.addEventListener('input', function() {
+    localStorage.setItem('draft-email', emailInput.value);
+  });
+
+  messageInput.addEventListener('input', function() {
+    localStorage.setItem('draft-message', messageInput.value);
+  });
+}
+
+// ===== Очистка черновика после отправки =====
+const contactForm = document.querySelector('.contact-form');
+
+if (contactForm) {
+  contactForm.addEventListener('submit', function() {
+    localStorage.removeItem('draft-name');
+    localStorage.removeItem('draft-email');
+    localStorage.removeItem('draft-message');
+  });
+}
