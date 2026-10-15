@@ -47,12 +47,12 @@ const mainItems = [
   { img: 'volkgips.jpg', title: 'Волк и Красная Шапочка' }
 ];
 
-if (window.location.pathname === '/' || 
-    window.location.pathname.endsWith('/') || 
-    window.location.pathname.includes('index')){
-  mainItems.forEach(function(item) {
+if (window.location.pathname === '/' ||
+  window.location.pathname.endsWith('/') ||
+  window.location.pathname.includes('index')) {
+  mainItems.forEach(function (item) {
     document.querySelector('.gallery').appendChild(createCard(item));
-  });    
+  });
 }
 
 // ===== Новые карточки для страницы "Фарфор" =====
@@ -60,11 +60,11 @@ const farforItems = [
   { img: 'teapair.jpg', title: 'Чайная пара' },
   { img: 'uzbeshka.jpg', title: 'Узбечка с чайником' },
   { img: 'dog.jpg', title: 'Сеттер' },
-  { img: 'hozyajka.jpg', title: 'Хозяйка медной горы'}
+  { img: 'hozyajka.jpg', title: 'Хозяйка медной горы' }
 ];
 
 if (window.location.pathname.includes('farfor')) {
-  farforItems.forEach(function(item) {
+  farforItems.forEach(function (item) {
     document.querySelector('.gallery').appendChild(createCard(item));
   });
 }
@@ -77,7 +77,7 @@ const moneyItems = [
 ];
 
 if (window.location.pathname.includes('money')) {
-  moneyItems.forEach(function(item) {
+  moneyItems.forEach(function (item) {
     document.querySelector('.gallery').appendChild(createCard(item));
   });
 }
@@ -88,11 +88,11 @@ const thingItems = [
   { img: 'grafin.jpg', title: 'Графин "Дама" с бокалами' },
   { img: 'neznakomka.jpg', title: 'Картина "Незнакомка"' },
   { img: 'pugovizy.jpg', title: 'Коллекция пуговиц' },
-  { img: 'sigaretnica.jpg', title: 'Сигаретница СССР'}
+  { img: 'sigaretnica.jpg', title: 'Сигаретница СССР' }
 ];
 
 if (window.location.pathname.includes('vintagethings')) {
-  thingItems.forEach(function(item) {
+  thingItems.forEach(function (item) {
     document.querySelector('.gallery').appendChild(createCard(item));
   });
 }
@@ -105,7 +105,7 @@ const bookItems = [
 ];
 
 if (window.location.pathname.includes('books')) {
-  bookItems.forEach(function(item) {
+  bookItems.forEach(function (item) {
     document.querySelector('.gallery').appendChild(createCard(item));
   });
 }
@@ -113,40 +113,42 @@ if (window.location.pathname.includes('books')) {
 // ===== Модальное окно =====
 const modal = document.querySelector('.modal');
 
-document.querySelectorAll('.card').forEach(function(card) {
-  card.addEventListener('click', function() {
-    let title = card.querySelector('figcaption').textContent;
+if (modal) {
+  // Закрытие по клику на фон
+  modal.addEventListener('click', function (e) {
+    if (e.target === modal) {
+      modal.classList.remove('open');
+    }
+  });
 
-    // Закрытие по клику на фон
-modal.addEventListener('click', function(e) {
-  if (e.target === modal) {
-    modal.classList.remove('open');
-  }
-});
+  // Закрытие по клавише Esc
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      modal.classList.remove('open');
+    }
+  });
 
-// Закрытие по клавише Esc
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    modal.classList.remove('open');
-  }
-});
+  document.querySelectorAll('.card').forEach(function (card) {
+    card.addEventListener('click', function () {
+      let title = card.querySelector('figcaption').textContent;
 
-modal.innerHTML = `
+      modal.innerHTML = `
   <div class="modal-content">
     <h2>${title}</h2>
     <p>Здесь будет подробное описание.</p>
     <button class="modal-close">Закрыть</button>
   </div>
 `;
-    modal.classList.add('open');
+      modal.classList.add('open');
 
-    modal.querySelector('.modal-close').addEventListener('click', function() {
-      modal.classList.remove('open');
+      modal.querySelector('.modal-close').addEventListener('click', function () {
+        modal.classList.remove('open');
+      });
     });
   });
-});
+}
 
-    // ===== Сохранение черновика формы =====
+// ===== Сохранение черновика формы =====
 const nameInput = document.querySelector('#name');
 const emailInput = document.querySelector('#email');
 const messageInput = document.querySelector('#message');
@@ -158,15 +160,15 @@ if (nameInput && emailInput && messageInput) {
   messageInput.value = localStorage.getItem('draft-message') || '';
 
   // Сохраняем при вводе
-  nameInput.addEventListener('input', function() {
+  nameInput.addEventListener('input', function () {
     localStorage.setItem('draft-name', nameInput.value);
   });
 
-  emailInput.addEventListener('input', function() {
+  emailInput.addEventListener('input', function () {
     localStorage.setItem('draft-email', emailInput.value);
   });
 
-  messageInput.addEventListener('input', function() {
+  messageInput.addEventListener('input', function () {
     localStorage.setItem('draft-message', messageInput.value);
   });
 }
@@ -175,7 +177,7 @@ if (nameInput && emailInput && messageInput) {
 const contactForm = document.querySelector('.contact-form');
 
 if (contactForm) {
-  contactForm.addEventListener('submit', function() {
+  contactForm.addEventListener('submit', function () {
     localStorage.removeItem('draft-name');
     localStorage.removeItem('draft-email');
     localStorage.removeItem('draft-message');
