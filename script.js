@@ -173,13 +173,71 @@ if (nameInput && emailInput && messageInput) {
   });
 }
 
-// ===== Очистка черновика после отправки =====
+// ===== Отправка формы через fetch =====
 const contactForm = document.querySelector('.contact-form');
 
 if (contactForm) {
-  contactForm.addEventListener('submit', function () {
-    localStorage.removeItem('draft-name');
-    localStorage.removeItem('draft-email');
-    localStorage.removeItem('draft-message');
+  contactForm.addEventListener('submit', async function (event) {
+    // 1. Останавливаем перезагрузку страницы
+    event.preventDefault();
+
+    // 2. Собираем значения
+    const nameValue = nameInput.value.trim();
+    const emailValue = emailInput.value.trim();
+    const messageValue = messageInput.value.trim();
+
+    // 3. Проверяем на ошибки
+    let errors = [];
+
+    if (nameValue === '') {
+      errors.push('Введите имя');
+    }
+
+    if (!emailValue.includes('@')) {
+      errors.push('Введите корректный email');
+    }
+
+    if (messageValue.length < 6) {
+      errors.push('Сообщение должно быть длиннее 5 символов');
+    }
+
+    // 4. Если ошибки есть — показываем их
+    if (errors.length > 0) {
+      alert('Ошибки:\n' + errors.join('\n'));
+    } else {
+      // Если ошибок нет — ОТПРАВЛЯЕМ НА СЕРВЕР
+      const formData = new FormData(contactForm);
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+
+      try {
+        submitBtn.textContent = 'Отправка...';
+        submitBtn.disabled = true;
+
+        // Вот здесь находится та самая строка
+        const response = await fetch('https://formspree.io/f/mgaokqoe', {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          localStorage.removeItem('draft-name');
+          localStorage.removeItem('draft-email');
+          localStorage.removeItem('draft-message');
+          contactForm.reset();
+          alert('Форма отправлена успешно! Проверьте почту.');
+        } else {
+          alert('Ошибка при отправке. Попробуйте позже.');
+        }
+      } catch (error) {
+        alert('Ошибка сети. Проверьте интернет-соединение.');
+      } finally {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      }
+    }
   });
 }
