@@ -18,6 +18,38 @@ buttonUp.addEventListener('click', () => {
   });
 });
 
+// ===== Функция показа уведомления =====
+function showToast(message, type = 'success') {
+  const container = document.getElementById('toast-container');
+
+  // Если на странице нет контейнера, ничего не делаем
+  if (!container) return;
+
+  // 1. Создаем элемент уведомления
+  const toast = document.createElement('div');
+  toast.classList.add('toast', type); // добавляем классы .toast и .success / .error
+  toast.textContent = message;
+
+  // 2. Добавляем его в контейнер
+  container.appendChild(toast);
+
+  // 3. Принудительно даем браузеру отрисовать его, чтобы сработала анимация
+  // (микро-задержка)
+  setTimeout(() => {
+    toast.classList.add('show');
+  }, 10);
+
+  // 4. Удаляем уведомление через 3 секунды
+  setTimeout(() => {
+    toast.classList.remove('show'); // запускаем анимацию исчезновения
+
+    // Ждем, пока закончится анимация (300мс), и удаляем элемент из HTML
+    setTimeout(() => {
+      toast.remove();
+    }, 300);
+  }, 3000);
+}
+
 // ===== Функция создания карточки =====
 function createCard(item) {
   const card = document.createElement('article');
@@ -201,10 +233,11 @@ if (contactForm) {
       errors.push('Сообщение должно быть длиннее 5 символов');
     }
 
-    // 4. Если ошибки есть — показываем их
     if (errors.length > 0) {
-      alert('Ошибки:\n' + errors.join('\n'));
+      // Показываем первую ошибку красным цветом
+      showToast(errors[0], 'error');
     } else {
+
       // Если ошибок нет — ОТПРАВЛЯЕМ НА СЕРВЕР
       const formData = new FormData(contactForm);
       const submitBtn = contactForm.querySelector('button[type="submit"]');
@@ -228,16 +261,17 @@ if (contactForm) {
           localStorage.removeItem('draft-email');
           localStorage.removeItem('draft-message');
           contactForm.reset();
-          alert('Форма отправлена успешно! Проверьте почту.');
+          showToast('Форма отправлена успешно!', 'success');
         } else {
-          alert('Ошибка при отправке. Попробуйте позже.');
+          showToast('Ошибка при отправке. Попробуйте позже.', 'error');
         }
       } catch (error) {
-        alert('Ошибка сети. Проверьте интернет-соединение.');
-      } finally {
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
+        showToast('Ошибка сети. Проверьте интернет.', 'error');
       }
+     finally {
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
     }
+  }
   });
 }
