@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Новости — Винтажные чудеса</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+</head>
+
+<body>
+  <div class="container">
+    
+    <!-- Боковое меню -->
+    <aside class="sidebar">
+      <h1 class="logo">Винтажные чудеса</h1>
+      <nav class="menu" aria-label="Основное меню">
+        <a href="index.html" class="menu-item">Главная</a>
+        <a href="books.html" class="menu-item">Книги СССР</a>
+        <a href="farfor.html" class="menu-item">Фарфор</a>
+        <a href="money.html" class="menu-item">Монеты</a>
+        <a href="vintagethings.html" class="menu-item">Винтажные вещи </a>
+        <a href="news.html" class="menu-item">Новости</a>
+        <a href="contacts.html" class="menu-item">Контакты</a>
+      </nav>
+    </aside>
+
+    <!-- Основной контент -->
+    <main class="content">
+      <header>
+        <h2>Новости и статьи</h2>
+      </header>
+
+      <!-- Здесь будут появляться карточки с сервера -->
+      <div class="gallery" id="news-container"></div> 
+      
+    </main>
+  </div>
+
+  <!-- Подвал -->
+  <footer class="footer">
+    <p>© 2026 Винтажные чудеса. Все права защищены.</p>
+  </footer>
+
+  <!-- Модальное окно -->
+  <div class="modal"></div>
+
+  <!-- Кнопка "Наверх" -->
+  <button class="button-up" aria-label="Наверх">↑</button>
+  <script src="script.js"></script>
+</body>
+
+</html>

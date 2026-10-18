@@ -275,3 +275,71 @@ if (contactForm) {
   }
   });
 }
+
+// ===== Загрузка новостей с API =====
+const newsContainer = document.getElementById('news-container');
+
+if (newsContainer) {
+  // Эта функция будет получать данные с сервера
+  async function loadNews() {
+    try {
+      // 1. Отправляем GET-запрос на сервер
+      const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+      
+      // 2. Проверяем, успешно ли прошел запрос
+      if (!response.ok) {
+        throw new Error('Ошибка сервера');
+      }
+
+      // 3. Превращаем ответ в объект JavaScript (JSON)
+      const data = await response.json();
+
+      // 4. Берем только первые 6 постов, чтобы не перегружать страницу
+      const posts = data.slice(0, 6);
+
+      // 5. Очищаем контейнер перед добавлением
+      newsContainer.innerHTML = '';
+
+      // 6. Создаем карточку для каждого поста
+      posts.forEach(function(post) {
+        // Создаем саму карточку (как вы делали это для книг)
+        const card = document.createElement('article');
+        card.classList.add('card');
+
+        // Внутри карточки будет заголовок и текст
+        // Поскольку в API нет картинок, мы можем использовать серую заглушку
+        const img = document.createElement('img');
+        img.src = 'https://via.placeholder.com/200x300?text=News'; // Заглушка
+        img.alt = 'Новость';
+        img.style.objectFit = 'cover';
+        
+        const title = document.createElement('h3');
+        title.textContent = post.title; // Название поста из API
+        title.style.fontSize = '16px';
+        title.style.margin = '10px 0';
+
+        const body = document.createElement('p');
+        // Обрезаем текст, чтобы он не был слишком длинным
+        body.textContent = post.body.slice(0, 50) + '...'; 
+        body.style.fontSize = '14px';
+        body.style.color = '#666';
+
+        // Собираем карточку
+        card.appendChild(img);
+        card.appendChild(title);
+        card.appendChild(body);
+
+        // Добавляем в контейнер на странице
+        newsContainer.appendChild(card);
+      });
+
+    } catch (error) {
+      // Если произошла ошибка (например, нет интернета)
+      console.error('Ошибка загрузки:', error);
+      newsContainer.innerHTML = '<p>Не удалось загрузить новости. Попробуйте позже.</p>';
+    }
+  }
+
+  // Вызываем функцию
+  loadNews();
+}
