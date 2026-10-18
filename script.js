@@ -306,7 +306,7 @@ if (newsContainer) {
       title.style.margin = '10px 0';
 
       const body = document.createElement('p');
-      body.textContent = post.body.slice(0, 50) + '...';
+      body.textContent = post.body;
       body.style.fontSize = '14px';
       body.style.color = '#666';
 
@@ -320,7 +320,7 @@ if (newsContainer) {
   // Функция 2: Загрузка данных с сервера
   async function loadNews() {
     try {
-      const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+      const response = await fetch('data.json');
       if (!response.ok) throw new Error('Ошибка сервера');
       
       const data = await response.json();
