@@ -302,16 +302,14 @@ if (newsContainer) {
 
       // 6. Создаем карточку для каждого поста
       posts.forEach(function(post) {
-        // Создаем саму карточку (как вы делали это для книг)
+        // Создаем саму карточку (как делала для книг)
         const card = document.createElement('article');
         card.classList.add('card');
 
-        // Внутри карточки будет заголовок и текст
-        // Поскольку в API нет картинок, мы можем использовать серую заглушку
-        const img = document.createElement('img');
-        img.src = 'https://via.placeholder.com/200x300?text=News'; // Заглушка
-        img.alt = 'Новость';
-        img.style.objectFit = 'cover';
+        // Внутри карточки будет блок-заглушка
+        const placeholder = document.createElement('div');
+        placeholder.classList.add('news-placeholder');
+        placeholder.textContent = 'Новость'; // Текст внутри заглушки
         
         const title = document.createElement('h3');
         title.textContent = post.title; // Название поста из API
@@ -325,7 +323,7 @@ if (newsContainer) {
         body.style.color = '#666';
 
         // Собираем карточку
-        card.appendChild(img);
+        card.appendChild(placeholder);
         card.appendChild(title);
         card.appendChild(body);
 
