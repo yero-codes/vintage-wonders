@@ -348,10 +348,6 @@ if (newsContainer) {
     // Сортируем новости по дате (сначала самые свежие)
       data.sort((a, b) => new Date(b.date) - new Date(a.date));
       
-      // Сохраняем все новости в глобальную переменную
-      allNews = data.slice(0, 20); 
-
-      
       // Сохраняем все новости в глобальную переменную (берем первые 20)
       allNews = data.slice(0, 20); 
       
@@ -364,20 +360,26 @@ if (newsContainer) {
     }
   }
 
-  // Функция 3: Фильтрация (срабатывает при вводе)
+  // Функция 3: Фильтрация с использованием Debounce
   if (searchInput) {
+    let debounceTimer; // Переменная для хранения таймера
+
     searchInput.addEventListener('input', function() {
-      const searchTerm = searchInput.value.toLowerCase().trim();
-      
-      // Используем метод filter
-      const filteredNews = allNews.filter(function(post) {
-        const titleMatch = post.title.toLowerCase().includes(searchTerm);
-        const bodyMatch = post.body.toLowerCase().includes(searchTerm);
-        return titleMatch || bodyMatch; // Оставляем, если совпадение в заголовке ИЛИ тексте
-      });
-      
-      // Перерисовываем карточки с отфильтрованными данными
-      renderNews(filteredNews);
+      // Очищаем предыдущий таймер, если он был
+      clearTimeout(debounceTimer);
+
+      // Запускаем новый таймер на 300 мс
+      debounceTimer = setTimeout(function() {
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        
+        const filteredNews = allNews.filter(function(post) {
+          const titleMatch = post.title.toLowerCase().includes(searchTerm);
+          const bodyMatch = post.body.toLowerCase().includes(searchTerm);
+          return titleMatch || bodyMatch;
+        });
+        
+        renderNews(filteredNews);
+      }, 300); // 300 миллисекунд = 0.3 секунды
     });
   }
 
