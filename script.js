@@ -225,8 +225,9 @@ if (contactForm) {
       errors.push('Введите имя');
     }
 
-    if (!emailValue.includes('@')) {
-      errors.push('Введите корректный email');
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(emailValue)) {
+      errors.push('Введите корректный email (например, name@mail.ru)');
     }
 
     if (messageValue.length < 6) {
