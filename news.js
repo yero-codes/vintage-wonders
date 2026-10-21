@@ -3,6 +3,49 @@ const newsContainer = document.getElementById('news-container');
 const searchInput = document.getElementById('search-input');
 let allNews = []; // Здесь мы будем хранить все скачанные новости
 
+class NewsCard {
+  constructor(title, body, dateStr, fullText) {
+    this.title = title;
+    this.body = body;
+    this.dateStr = dateStr;
+    this.fullText = fullText;
+  }
+
+  // Метод создает и возвращает HTML-элемент карточки
+  createElement() {
+    const card = document.createElement('article');
+    card.classList.add('card');
+    card.dataset.fullText = this.fullText;
+
+    const placeholder = document.createElement('div');
+    placeholder.classList.add('news-placeholder');
+    placeholder.textContent = 'Новость';
+
+    const dateEl = document.createElement('div');
+    dateEl.textContent = this.dateStr;
+    dateEl.style.fontSize = '12px';
+    dateEl.style.color = '#999';
+    dateEl.style.marginBottom = '5px';
+
+    const titleEl = document.createElement('h3');
+    titleEl.textContent = this.title;
+    titleEl.style.fontSize = '16px';
+    titleEl.style.margin = '10px 0';
+
+    const bodyEl = document.createElement('p');
+    bodyEl.textContent = this.body;
+    bodyEl.style.fontSize = '14px';
+    bodyEl.style.color = '#666';
+
+    card.appendChild(placeholder);
+    card.appendChild(dateEl);
+    card.appendChild(titleEl);
+    card.appendChild(bodyEl);
+
+    return card;
+  }
+}
+
 // Экспортируем функцию загрузки, чтобы script.js мог её вызвать
 export async function loadNews() {
   if (!newsContainer) return;
@@ -40,45 +83,20 @@ function renderNews(newsArray) {
   }
 
   newsArray.forEach(function(post) {
-    const card = document.createElement('article');
-    card.classList.add('card');
-    card.dataset.fullText = post.body;
-
-    const placeholder = document.createElement('div');
-    placeholder.classList.add('news-placeholder');
-    placeholder.textContent = 'Новость';
-
-    // ========Дата=======
+    // Форматируем дату
     const dateObj = new Date(post.date);
     const dateStr = dateObj.toLocaleDateString('ru-RU', {
-      day: 'numeric',
-      month: 'long',
-      year: 'numeric'
+      day: 'numeric', month: 'long', year: 'numeric'
     });
 
-    const dateEl = document.createElement('div');
-    dateEl.textContent = dateStr;
-    dateEl.style.fontSize = '12px';
-    dateEl.style.color = '#999';
-    dateEl.style.marginBottom = '5px';
-    // =====================================
+    // Обрезаем текст для карточки
+    const shortBody = post.body.slice(0, 60) + '...';
 
-    const title = document.createElement('h3');
-    title.textContent = post.title;
-    title.style.fontSize = '16px';
-    title.style.margin = '10px 0';
-
-    const body = document.createElement('p');
-    // Оставляем только первые 60 символов для карточки
-    body.textContent = post.body.slice(0, 60) + '...';
-    body.style.fontSize = '14px';
-    body.style.color = '#666';
-
-    card.appendChild(placeholder);
-    card.appendChild(dateEl);
-    card.appendChild(title);
-    card.appendChild(body);
-    newsContainer.appendChild(card);
+    // Создаем экземпляр класса
+    const cardInstance = new NewsCard(post.title, shortBody, dateStr, post.body);
+    
+    // Получаем HTML-элемент и добавляем в контейнер
+    newsContainer.appendChild(cardInstance.createElement());
   });
 }
 
