@@ -344,6 +344,13 @@ if (newsContainer) {
       if (!response.ok) throw new Error('Ошибка сервера');
       
       const data = await response.json();
+
+    // Сортируем новости по дате (сначала самые свежие)
+      data.sort((a, b) => new Date(b.date) - new Date(a.date));
+      
+      // Сохраняем все новости в глобальную переменную
+      allNews = data.slice(0, 20); 
+
       
       // Сохраняем все новости в глобальную переменную (берем первые 20)
       allNews = data.slice(0, 20); 
