@@ -296,6 +296,8 @@ if (newsContainer) {
       const card = document.createElement('article');
       card.classList.add('card');
 
+      card.dataset.fullText = post.body;
+
       const placeholder = document.createElement('div');
       placeholder.classList.add('news-placeholder');
       placeholder.textContent = 'Новость';
@@ -306,7 +308,8 @@ if (newsContainer) {
       title.style.margin = '10px 0';
 
       const body = document.createElement('p');
-      body.textContent = post.body;
+      // Оставляем только первые 60 символов для карточки
+      body.textContent = post.body.slice(0,60)+'...';
       body.style.fontSize = '14px';
       body.style.color = '#666';
 
@@ -356,4 +359,55 @@ if (newsContainer) {
 
   // Запускаем загрузку при старте страницы
   loadNews();
+}
+
+// ===== Модальное окно для новостей (делегирование) =====
+const newsModal = document.querySelector('.modal');
+const newsList = document.getElementById('news-container');
+
+if (newsModal && newsList) {
+  // Вешаем клик на весь контейнер
+  newsList.addEventListener('click', function(event) {
+    
+    // Ищем, есть ли среди родителей кликнутого элемента карточка .card
+    const card = event.target.closest('.card');
+    
+    // Если кликнули мимо карточки, ничего не делаем
+    if (!card) return;
+
+    // Если кликнули по карточке — достаем из нее заголовок и текст
+    const title = card.querySelector('h3').textContent;
+    const body = card.querySelector('p').textContent;
+
+    // Наполняем модалку
+    newsModal.innerHTML = `
+      <div class="modal-content">
+        <h2>${title}</h2>
+        <p>${card.dataset.fullText}</p>
+        <button class="modal-close">Закрыть</button>
+      </div>
+    `;
+    
+    // Открываем модалку
+    newsModal.classList.add('open');
+
+    // Закрытие по кнопке
+    newsModal.querySelector('.modal-close').addEventListener('click', function() {
+      newsModal.classList.remove('open');
+    });
+  });
+
+  // Закрытие по клику на фон (один раз для этой страницы)
+  newsModal.addEventListener('click', function(e) {
+    if (e.target === newsModal) {
+      newsModal.classList.remove('open');
+    }
+  });
+
+  // Закрытие по Esc
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      newsModal.classList.remove('open');
+    }
+  });
 }
