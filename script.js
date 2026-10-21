@@ -302,6 +302,21 @@ if (newsContainer) {
       placeholder.classList.add('news-placeholder');
       placeholder.textContent = 'Новость';
 
+      // ========Дата=======
+      const dateObj = new Date(post.date);
+      const dateStr = dateObj.toLocaleDateString('ru-RU', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+      });
+
+      const dateEl = document.createElement('div');
+      dateEl.textContent = dateStr;
+      dateEl.style.fontSize = '12px';
+      dateEl.style.color = '#999';
+      dateEl.style.marginBottom = '5px';
+     // =====================================
+
       const title = document.createElement('h3');
       title.textContent = post.title;
       title.style.fontSize = '16px';
@@ -314,6 +329,7 @@ if (newsContainer) {
       body.style.color = '#666';
 
       card.appendChild(placeholder);
+      card.appendChild(dateEl);
       card.appendChild(title);
       card.appendChild(body);
       newsContainer.appendChild(card);
