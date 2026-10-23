@@ -4,7 +4,8 @@
 
 ## Живой сайт
 
-[yero-codes.github.io/vintage-wonders](https://yero-codes.github.io/vintage-wonders/)
+- **Текущая версия (Vanilla JS):** [yero-codes.github.io/vintage-wonders](https://yero-codes.github.io/vintage-wonders/)
+- **React-версия:** [yero-codes.github.io/vintage-react](https://yero-codes.github.io/vintage-react/)
 
 ## Скриншоты
 
@@ -24,6 +25,7 @@
 - `money.html` — монеты и банкноты
 - `vintagethings.html` — винтажные вещи
 - `contacts.html` — контакты и форма
+- `news.html` — новости (поиск, сортировка, модалка)
 
 ## Технологии
 
@@ -33,6 +35,7 @@
 - Адаптив: телефон, планшет, компьютер
 - Форма: Formspree
 - Хостинг: GitHub Pages
+- JavaScript (fetch, async/await, localStorage)
 
 ## Что освоено
 
@@ -46,6 +49,11 @@
 - Оптимизация картинок
 - Lighthouse: 100/100/100/91
 - Git и GitHub
+- Дебаунс (Debounce) для поиска
+- Всплывающие уведомления (Toast) вместо alert
+- Отправка формы через fetch (AJAX)
+- Сохранение черновика формы в localStorage
+- Делегирование событий для модальных окон
 
 ## Структура
    ```
@@ -55,6 +63,7 @@ vintage-wonders/
 ├── farfor.html
 ├── money.html
 ├── vintagethings.html
+├── news.html
 ├── contacts.html
 ├── style.css
 ├── script.js
