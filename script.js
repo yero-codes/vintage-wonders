@@ -287,3 +287,31 @@ if (contactForm) {
 if (document.getElementById('news-container')) {
   loadNews();
 }
+
+// Демо-режим для формы обратной связи
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('contact-form');
+  
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault(); // Останавливаем отправку на сервер
+      
+      // Получаем значения полей
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+      
+      // Простейшая проверка
+      if (!name || !email) {
+        alert('Пожалуйста, заполните имя и email');
+        return;
+      }
+      
+      // Показываем сообщение об успехе (демо)
+      alert(`Спасибо, ${name}! Это демонстрационная форма. В реальном проекте сообщение было бы отправлено.`);
+      
+      // Очищаем форму
+      form.reset();
+    });
+  }
+});
